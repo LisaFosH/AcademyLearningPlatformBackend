@@ -21,5 +21,7 @@ namespace AcademyProsjekt.Models
         public int PhoneNumber { get; set; }
 
         public ICollection<Enrollment> Enrollments { get; set; }
+        public ICollection<Progress> Progress { get; set; }
+
     }
 }

@@ -59,6 +59,70 @@ namespace AcademyProsjekt.Migrations
                     b.ToTable("Enrollment");
                 });
 
+            modelBuilder.Entity("AcademyProsjekt.Models.Module", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Module");
+                });
+
+            modelBuilder.Entity("AcademyProsjekt.Models.Page", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("LearningMaterial")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningOutcomes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Page");
+                });
+
+            modelBuilder.Entity("AcademyProsjekt.Models.Progress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("PageId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Progression")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PageId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Progress");
+                });
+
             modelBuilder.Entity("AcademyProsjekt.Models.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -328,6 +392,25 @@ namespace AcademyProsjekt.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("AcademyProsjekt.Models.Progress", b =>
+                {
+                    b.HasOne("AcademyProsjekt.Models.Page", "Page")
+                        .WithMany("Progress")
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AcademyProsjekt.Models.Student", "Student")
+                        .WithMany("Progress")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Page");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -384,9 +467,16 @@ namespace AcademyProsjekt.Migrations
                     b.Navigation("Enrollments");
                 });
 
+            modelBuilder.Entity("AcademyProsjekt.Models.Page", b =>
+                {
+                    b.Navigation("Progress");
+                });
+
             modelBuilder.Entity("AcademyProsjekt.Models.Student", b =>
                 {
                     b.Navigation("Enrollments");
+
+                    b.Navigation("Progress");
                 });
 #pragma warning restore 612, 618
         }

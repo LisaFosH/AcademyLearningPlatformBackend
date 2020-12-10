@@ -61,6 +61,35 @@ namespace AcademyProsjekt.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Module",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tag = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Module", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Page",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LearningOutcomes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LearningMaterial = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Page", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Student",
                 columns: table => new
                 {
@@ -224,6 +253,33 @@ namespace AcademyProsjekt.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Progress",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Progression = table.Column<double>(type: "float", nullable: false),
+                    PageId = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Progress", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Progress_Page_PageId",
+                        column: x => x.PageId,
+                        principalTable: "Page",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Progress_Student_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Student",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -272,6 +328,16 @@ namespace AcademyProsjekt.Migrations
                 name: "IX_Enrollment_StudentId",
                 table: "Enrollment",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Progress_PageId",
+                table: "Progress",
+                column: "PageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Progress_StudentId",
+                table: "Progress",
+                column: "StudentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -295,6 +361,12 @@ namespace AcademyProsjekt.Migrations
                 name: "Enrollment");
 
             migrationBuilder.DropTable(
+                name: "Module");
+
+            migrationBuilder.DropTable(
+                name: "Progress");
+
+            migrationBuilder.DropTable(
                 name: "Teacher");
 
             migrationBuilder.DropTable(
@@ -305,6 +377,9 @@ namespace AcademyProsjekt.Migrations
 
             migrationBuilder.DropTable(
                 name: "Course");
+
+            migrationBuilder.DropTable(
+                name: "Page");
 
             migrationBuilder.DropTable(
                 name: "Student");
