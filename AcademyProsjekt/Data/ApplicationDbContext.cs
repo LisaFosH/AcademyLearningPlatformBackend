@@ -12,5 +12,14 @@ namespace AcademyProsjekt.Data
             : base(options)
         {
         }
+
+        public DbSet<Models.Student> Student { get; set; }
+
+        public DbSet<Models.Course> Course { get; set; }
+        public DbSet<Models.Teacher> Teacher { get; set; }
+        public DbSet<Models.Enrollment> Enrollment { get; set; }
+
+
+
     }
 }
