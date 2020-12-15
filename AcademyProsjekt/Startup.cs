@@ -17,6 +17,8 @@ namespace AcademyProsjekt
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,6 +36,12 @@ namespace AcademyProsjekt
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //Added Cors Default Policy
+            services.AddCors(options => options.AddDefaultPolicy(
+                    builder => builder.AllowAnyOrigin()));
+
+
             services.AddControllersWithViews();
         }
 
@@ -55,6 +63,9 @@ namespace AcademyProsjekt
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //Added usecors, has to be between routing and useauth
+            app.UseCors();
 
             app.UseAuthentication();
             app.UseAuthorization();
