@@ -38,7 +38,7 @@ namespace AcademyProsjekt
 
             //Added Cors Default Policy
             services.AddCors(options => options.AddDefaultPolicy(
-                    builder => builder.AllowAnyOrigin()));
+                    builder => builder.SetIsOriginAllowed(origin => new Uri(origin).Host=="localhost").AllowAnyHeader().AllowAnyMethod().AllowCredentials()));
 
 
             services.AddControllersWithViews();

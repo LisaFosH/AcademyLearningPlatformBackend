@@ -7,11 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AcademyProsjekt.Data;
 using AcademyProsjekt.Models;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace AcademyProsjekt.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ApiCoursesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -20,7 +24,7 @@ namespace AcademyProsjekt.Controllers
         {
             _context = context;
         }
-
+        
         // GET: api/ApiCourses
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
