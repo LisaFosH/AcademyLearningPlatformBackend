@@ -1,4 +1,5 @@
 using AcademyProsjekt.Data;
+using AcademyProsjekt.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,7 +34,7 @@ namespace AcademyProsjekt
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()              
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             //Added Cors Default Policy
@@ -44,9 +45,33 @@ namespace AcademyProsjekt
             services.AddControllersWithViews();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+
+
+        public void CreateRoles(IServiceProvider serviceProvider)
         {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var result = roleManager.CreateAsync(new IdentityRole("admin"));
+            var user = new ApplicationUser();
+
+            var userResult = userManager.CreateAsync(user, "123");
+
+            if (userResult.IsCompletedSuccessfully)
+            {
+                Console.WriteLine("Success");
+            }
+
+        }
+
+
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
+        {
+
+            CreateRoles(serviceProvider);
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
