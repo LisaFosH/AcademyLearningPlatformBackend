@@ -40,9 +40,9 @@ namespace AcademyProsjekt
 
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
-                    builder => builder.RequireRole("Admin", "Manager", "User"));
+                    builder => builder.RequireRole("Admin", "Manager", "User", "JensTest"));
                 options.AddPolicy("writepolicy",
-                    builder => builder.RequireRole("Admin", "Manager"));
+                    builder => builder.RequireRole("Admin", "Manager", "JensTest"));
             });
 
             /* services.AddDbContext<ApplicationDbContext>(options =>
