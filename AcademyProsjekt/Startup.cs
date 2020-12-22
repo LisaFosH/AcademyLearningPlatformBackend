@@ -35,6 +35,11 @@ namespace AcademyProsjekt
                  .AddDefaultUI()
                  .AddEntityFrameworkStores<ApplicationDbContext>()
                  .AddDefaultTokenProviders();
+
+            //Added Cors Default Policy
+            services.AddCors(options => options.AddDefaultPolicy(
+                    builder => builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost").AllowAnyHeader().AllowAnyMethod().AllowCredentials()));
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -45,20 +50,7 @@ namespace AcademyProsjekt
                     builder => builder.RequireRole("Admin", "Manager", "JensTest"));
             });
 
-            /* services.AddDbContext<ApplicationDbContext>(options =>
-                 options.UseSqlServer(
-                     Configuration.GetConnectionString("DefaultConnection")));
-             services.AddDatabaseDeveloperPageExceptionFilter();
-
-             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
-             //Added Cors Default Policy
-             services.AddCors(options => options.AddDefaultPolicy(
-                     builder => builder.SetIsOriginAllowed(origin => new Uri(origin).Host=="localhost").AllowAnyHeader().AllowAnyMethod().AllowCredentials()));
-
-
-             services.AddControllersWithViews();*/
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
