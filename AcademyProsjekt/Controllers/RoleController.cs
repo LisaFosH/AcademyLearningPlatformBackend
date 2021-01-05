@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace AcademyProsjekt.Controllers
 {
-	public class RoleController : Controller
+    //Creating role controller 
+
+    public class RoleController : Controller
     {
         RoleManager<IdentityRole> roleManager;
 
@@ -16,6 +18,8 @@ namespace AcademyProsjekt.Controllers
         {
             this.roleManager = roleManager;
         }
+
+        /*Roles and policies created in in startup.cs file will be applied policies in code below*/
 
         [Authorize(Policy = "readpolicy")]
         public IActionResult Index()
@@ -36,30 +40,6 @@ namespace AcademyProsjekt.Controllers
             await roleManager.CreateAsync(role);
             return RedirectToAction("Index");
         }
-        /*
-        public RoleController(RoleManager<IdentityRole> roleManager)
-        {
-            this.roleManager = roleManager;
-        }
-
-        public IActionResult Index()
-        {
-            var roles = roleManager.Roles.ToList();
-            return View(roles);
-        }
-
-        public IActionResult Create()
-        {
-            return View(new IdentityRole());
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(IdentityRole role)
-        {
-            await roleManager.CreateAsync(role);
-            return RedirectToAction("Index");
-        }
-
-        */
+       
     }
 }
