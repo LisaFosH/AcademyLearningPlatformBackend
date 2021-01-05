@@ -1,4 +1,10 @@
 # AcademyProsjekt
+
+For å opprette roller, må du først laste inn `dbo.AspNetRoles.data.sql`.
+
+1. Høyreklikk databasenavnet i Visual studio SQL server explorer og velg "New Query..."
+2. Kopier inn innholdet fra filen `dbo.AspNetRoles.data.sql` og kjør spørringene
+
 //For å kunne registrere bruker
 //Åpne prosjektet i Visual Studio
 //Åpne Package Manager Console i Visual Studio
