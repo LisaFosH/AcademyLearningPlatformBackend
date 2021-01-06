@@ -86,7 +86,7 @@ namespace AcademyProsjekt.Areas.Identity.Pages.Account
                 {
                     //Made return redirect to any website we put in here:
                     _logger.LogInformation("User logged in.");
-                    return Redirect("https://www.vg.no/");
+                    return Redirect("https://alpreact.z22.web.core.windows.net/");
                 }
                 if (result.RequiresTwoFactor)
                 {
