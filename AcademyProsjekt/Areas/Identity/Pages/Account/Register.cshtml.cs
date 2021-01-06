@@ -19,6 +19,7 @@ namespace AcademyProsjekt.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+        /*Role is added in order to assign the role to a user when the user is created*/
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;

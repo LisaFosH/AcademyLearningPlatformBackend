@@ -26,6 +26,7 @@ namespace AcademyProsjekt
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        // Modified to include roles
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -43,6 +44,8 @@ namespace AcademyProsjekt
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            /*Defined some policies - groups of roles that can be assigned to actions and controllers 
+            in order to control access to these functionalities*/
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
                     builder => builder.RequireRole("Admin", "Manager", "User", "JensTest"));
