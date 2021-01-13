@@ -14,6 +14,9 @@ namespace AcademyProsjekt.Models
         public string Description { get; set; }
         public string Tag { get; set; }
 
+        public int CourseID { get; set; }
+        public Course Course { get; set; }
 
+        public ICollection <Page> Pages { get; set; }
     }
 }

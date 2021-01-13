@@ -4,14 +4,16 @@ using AcademyProsjekt.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AcademyProsjekt.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210113124712_CourseModule")]
+    partial class CourseModule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,12 +100,7 @@ namespace AcademyProsjekt.Migrations
                     b.Property<string>("LearningOutcomes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ModuleID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ModuleID");
 
                     b.ToTable("Page");
                 });
@@ -409,17 +406,6 @@ namespace AcademyProsjekt.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("AcademyProsjekt.Models.Page", b =>
-                {
-                    b.HasOne("AcademyProsjekt.Models.Module", "Module")
-                        .WithMany("Pages")
-                        .HasForeignKey("ModuleID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Module");
-                });
-
             modelBuilder.Entity("AcademyProsjekt.Models.Progress", b =>
                 {
                     b.HasOne("AcademyProsjekt.Models.Page", "Page")
@@ -495,11 +481,6 @@ namespace AcademyProsjekt.Migrations
                     b.Navigation("Enrollments");
 
                     b.Navigation("Modules");
-                });
-
-            modelBuilder.Entity("AcademyProsjekt.Models.Module", b =>
-                {
-                    b.Navigation("Pages");
                 });
 
             modelBuilder.Entity("AcademyProsjekt.Models.Page", b =>
