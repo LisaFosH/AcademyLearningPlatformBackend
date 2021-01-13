@@ -15,5 +15,7 @@ namespace AcademyProsjekt.Models
 
         public ICollection<Enrollment> Enrollments { get; set; }
 
+        public ICollection<Module> Modules { get; set; }
+
     }
 }

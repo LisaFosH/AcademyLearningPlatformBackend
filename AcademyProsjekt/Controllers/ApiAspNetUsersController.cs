@@ -16,6 +16,7 @@ namespace AcademyProsjekt.Controllers
 		{
             return new JsonResult (new { username = User.Identity.Name});
 		}
+
         
     }
 }

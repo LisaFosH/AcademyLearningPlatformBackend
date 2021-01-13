@@ -14,6 +14,7 @@ namespace AcademyProsjekt.Models
         public string LearningMaterial { get; set; }
         public ICollection<Progress> Progress { get; set; }
 
-
+        public int ModuleID { get; set; }
+        public Module Module { get; set; }
     }
 }
