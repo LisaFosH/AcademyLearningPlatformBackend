@@ -27,9 +27,38 @@ namespace AcademyProsjekt.Controllers
         
         // GET: api/ApiCourses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
+        public ActionResult GetCourse()
         {
-            return await _context.Course.ToListAsync();
+            return new JsonResult (_context.Course
+                .Include(course => course.Modules)
+                .ThenInclude(module => module.Pages)
+                .ToList()
+                .Select(course => {
+                return new
+                {
+                    course.Id,
+                    course.Title,
+
+                    modules = course.Modules.Select(module =>
+                    {
+                        return new
+                        {
+                            module.Id,
+                            module.Title,
+
+
+                             pages = module.Pages.Select(pages =>
+                             {
+                                 return new
+                                 {
+                                     pages.Id,
+                                     pages.LearningMaterial
+                                 };
+                             })
+                        };
+                    })
+                };
+            }));
         }
 
         // GET: api/ApiCourses/5

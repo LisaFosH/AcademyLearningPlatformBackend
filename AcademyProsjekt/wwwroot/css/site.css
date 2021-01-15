@@ -2,32 +2,70 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+  
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: white;
 }
 
+th {
+    color: white!important;
+}
+
+td {
+    color: white!important;
+}
+
+a.navbar-brand {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.navbarlogo {
+    max-width: 200px;
+    padding-bottom: 0;
+    padding-top: 0;
+    
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
+button.nav-link.btn.btn-link.text-dark {
+    color: #047364!important;
+    font-weight: 500;
+}
+
+}
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
+a.nav-link.text-dark {
+    color: #047364!important;
+    font-weight: 500;
+}
+
+ul.navbar-nav.flex-grow-1{
+    flex-grow: 0!important;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
+}
+body {
+    background-image: url("https://images.unsplash.com/photo-1522071901873-411886a10004?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80&fbclid=IwAR2H7M__u3H4wyit1vnOQbIag4t2CCyHbgsOcD9Zt2R0qODVtGuyfhTWH44");
 }
 @media (min-width: 768px) {
   html {
@@ -59,13 +97,28 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #aee6d9;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #049A78!important;
+    border-top: none !important;
 }
+.container{
+   color: white;
+}
+
+/*
+.navbar-brand {
+    background-image: url(/css/AWlogo.jpg);
+    background-size: 40px 40px;
+    height: 40px;
+    margin: 5px;
+    width: 40px;
+}*/

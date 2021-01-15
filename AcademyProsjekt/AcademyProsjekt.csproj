@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\AW_logo_Academy.svg" />
+    <Content Remove="wwwroot\css\AW_logo_Academy_small_green_RGB.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Home\AW_logo_Academy_small_green_RGB.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.1" />
