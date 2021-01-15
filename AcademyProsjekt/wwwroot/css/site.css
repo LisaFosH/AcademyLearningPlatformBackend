@@ -8,7 +8,7 @@ a.navbar-brand {
   
 }
 
-/* Provide sufficient contrast against white background */
+/* Provide sufficient contrast against white background NB! added dark picture, hence white text */
 a {
   color: white;
 }
@@ -25,8 +25,10 @@ a.navbar-brand {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
 .navbarlogo {
-    max-width: 200px;
+    max-width: 250px;
+    max-height: 80px;
     padding-bottom: 0;
     padding-top: 0;
     
@@ -39,7 +41,7 @@ a.navbar-brand {
 
 button.nav-link.btn.btn-link.text-dark {
     color: #047364!important;
-    font-weight: 500;
+   
 }
 
 }
@@ -51,14 +53,16 @@ button.nav-link.btn.btn-link.text-dark {
 
 a.nav-link.text-dark {
     color: #047364!important;
-    font-weight: 500;
+   
 }
 
 ul.navbar-nav.flex-grow-1{
     flex-grow: 0!important;
 }
 
-
+nav.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3 {
+    padding: 0!important;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -113,6 +117,7 @@ body {
 .container{
    color: white;
 }
+
 
 /*
 .navbar-brand {
