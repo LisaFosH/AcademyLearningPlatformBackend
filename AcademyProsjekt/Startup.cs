@@ -48,9 +48,9 @@ namespace AcademyProsjekt
             in order to control access to these functionalities*/
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
-                    builder => builder.RequireRole("Admin", "Manager", "User", "JensTest"));
+                    builder => builder.RequireRole("Admin", "Manager", "User"));
                 options.AddPolicy("writepolicy",
-                    builder => builder.RequireRole("Admin", "Manager", "JensTest"));
+                    builder => builder.RequireRole("Admin", "Manager"));
             });
 
             
