@@ -52,7 +52,9 @@ namespace AcademyProsjekt.Controllers
                                  return new
                                  {
                                      pages.Id,
-                                     pages.LearningMaterial
+                                     pages.LearningMaterial,
+                                     pages.LearningOutcomes
+                                  
                                  };
                              })
                         };

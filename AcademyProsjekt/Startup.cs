@@ -44,8 +44,8 @@ namespace AcademyProsjekt
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            /*Defined some policies - groups of roles that can be assigned to actions and controllers 
-            in order to control access to these functionalities*/
+            /*Here we have defined policies that can be assigned to actions and controllers 
+            in order to control access to functionalities*/
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
                     builder => builder.RequireRole("Admin", "Manager", "User"));

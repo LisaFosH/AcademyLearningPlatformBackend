@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\AW_logo_Academy_small_green_1.svg" />
     <Content Remove="wwwroot\css\AW_logo_Academy.svg" />
     <Content Remove="wwwroot\css\AW_logo_Academy_small_green_RGB.svg" />
   </ItemGroup>
